@@ -1,0 +1,63 @@
+body {
+    background: #fff;
+}
+
+.logo {
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.btn {
+    transition: .1s ease;
+
+    &.btn-primary {
+        background: #963C82;
+        border: none;
+
+        &:hover {
+            background: #D990C9;
+        }
+
+        &:focus {
+            background: #963C82;
+            transform: scale(.98);
+        }
+
+        &:active {
+            background: #963C82;
+        }
+    }
+}
+
+.navbar {
+    background: #e1c3be;
+    border-bottom: 2px solid #963c82;
+
+    a {
+        font-weight: 600;
+        font-size: 16px;
+    }
+}
+
+.top-header {
+    height: 80px;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+
+    .contacts {
+        button {
+            margin-right: 35px;
+        }
+    }
+}
+
+a {
+    color: #963C82;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+        color: #963C82;
+    }
+}

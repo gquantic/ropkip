@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Models\Category;
 use App\Models\Course;
 
 class CourseController extends Controller
@@ -11,11 +12,14 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        //
+        return view('courses.index', [
+            'categories' => Category::with('categoryTypes')->get(),
+            'courses' => Course::all(),
+        ]);
     }
 
     /**

@@ -20,3 +20,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('my')->middleware('auth')->group(function () {
+
+});
+
+Route::resources([
+    'courses' => \App\Http\Controllers\CourseController::class,
+]);
+
+Route::get('/courses/get/{id}', function ($id) {
+    return view('courses.get', ['course' => \App\Models\Course::find($id)]);
+});

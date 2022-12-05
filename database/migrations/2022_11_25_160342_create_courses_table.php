@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('category_id');
             $table->string('title');
             $table->text('description')->nullable();
+            $table->json('params')->nullable();
             $table->integer('price')->comment('Цена за час');
             $table->timestamps();
         });

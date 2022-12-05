@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +22,23 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        User::query()->create([
+           'name' => 'Murad',
+           'email' => 'gapurovich05@mail.ru',
+           'password' => Hash::make('@muraa005'),
+        ]);
+
+        \App\Models\Category::factory()
+            ->count(10)
+            ->create();
+
+        $this->call([
+            CategoryTypesSeeder::class,
+        ]);
+
+        \App\Models\Course::factory()
+            ->count(10)
+            ->create();
     }
 }

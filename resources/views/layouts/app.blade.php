@@ -13,39 +13,81 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite([
+        'resources/sass/app.scss',
+        'resources/sass/styles.scss',
+        'resources/js/app.js'
+    ])
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+        <header class="top-header">
+            <div class="container d-flex justify-content-between align-items-center">
+                <a class="navbar-brand logo" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+
+                <div class="d-flex align-items-center contacts">
+                    <button class="btn btn-primary">Наши курсы</button>
+
+                    <div class="d-flex flex-column">
+                        <a href="">8 (800) 777-95-78</a>
+                        <a href="">info@obrcentr.com</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <nav class="navbar navbar-expand-md navbar-light">
+            <div class="container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav d-flex justify-content-between w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Направления</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">О нас</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Возможности</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Документы</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Партнеры</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Отзывы</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Контакты</a>
+                        </li>
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">Вход</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
                                 </li>
                             @endif
                         @else
@@ -76,5 +118,7 @@
             @yield('content')
         </main>
     </div>
+
+    @stack('scripts')
 </body>
 </html>
