@@ -29,6 +29,13 @@ Route::resources([
     'courses' => \App\Http\Controllers\CourseController::class,
 ]);
 
+
+/**
+ * Get course
+ */
 Route::get('/courses/get/{id}', function ($id) {
-    return view('courses.get', ['course' => \App\Models\Course::find($id)]);
-});
+    $getInfoController = new \App\Http\Controllers\Api\GetInfoController();
+    return view('courses.get', [
+        'course' => \App\Models\Course::find($id),
+    ]);
+})->name('get-course');

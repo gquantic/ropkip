@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\CourseMaterial;
 
 class CourseController extends Controller
 {
@@ -47,11 +48,14 @@ class CourseController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(Course $course)
     {
-        //
+        return view('courses.show', [
+            'course' => $course,
+            'materials' => CourseMaterial::query()->where('course_id', $course->id)->get(),
+        ]);
     }
 
     /**

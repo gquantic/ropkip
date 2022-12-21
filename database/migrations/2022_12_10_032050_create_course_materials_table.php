@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('course_materials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
-            $table->foreignId('category_type_id')->constrained('category_types');
+            $table->foreignId('course_id')->constrained('courses');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->json('params')->nullable();
-            $table->integer('price')->comment('Цена за час');
-            $table->integer('hours_per_day')->default(3)->comment('Часов обучения в день');
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('course_materials');
     }
 };

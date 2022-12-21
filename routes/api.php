@@ -19,3 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('category/types', 'App\Http\Controllers\Api\CategoryController@getCategoryTypes');
+
+Route::get('get/info', 'App\Http\Controllers\Api\GetInfoController@getCourseInfo')->name('api.get-info');

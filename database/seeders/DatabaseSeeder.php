@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CourseMaterialLink;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -40,5 +41,13 @@ class DatabaseSeeder extends Seeder
         \App\Models\Course::factory()
             ->count(10)
             ->create();
+
+        $this->call([
+            CourseMaterialSeeder::class,
+        ]);
+
+        $this->call([
+            CourseMaterialLinkSeeder::class,
+        ]);
     }
 }

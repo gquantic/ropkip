@@ -78,8 +78,12 @@
                                 <p><b>330</b> часов - <b>{{ $course->price * 330 }}</b> руб.</p>
                             </div>
                             <div class="col-xl-3">
-                                <a class="btn btn-primary d-xl-block">Регистрация</a>
-                                <a class="btn btn-light d-xl-block mt-xl-2"> О программе</a>
+                                <a class="btn btn-primary d-xl-block" href="{{ route('get-course', $course->id) }}">
+                                    Регистрация
+                                </a>
+                                <a class="btn btn-light d-xl-block mt-xl-2" href="{{ route('courses.show', $course->id) }}">
+                                    О программе
+                                </a>
                             </div>
                         </div>
                     </div>

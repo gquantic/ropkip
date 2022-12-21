@@ -31,7 +31,9 @@
                 </a>
 
                 <div class="d-flex align-items-center contacts">
-                    <button class="btn btn-primary">Наши курсы</button>
+                    <a href="{{ route('courses.index') }}">
+                        <button class="btn btn-primary">Наши курсы</button>
+                    </a>
 
                     <div class="d-flex flex-column">
                         <a href="">8 (800) 777-95-78</a>
