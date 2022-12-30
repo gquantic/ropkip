@@ -54,7 +54,7 @@ class CourseController extends Controller
     {
         return view('courses.show', [
             'course' => $course,
-            'materials' => CourseMaterial::query()->where('course_id', $course->id)->get(),
+//            'materials' => CourseMaterial::query()->where('course_id', $course->id)->get(),
         ]);
     }
 

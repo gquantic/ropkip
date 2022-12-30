@@ -9,7 +9,12 @@ class CourseMaterial extends Model
 {
     use HasFactory;
 
-    public function links()
+    public function plan()
+    {
+        return $this->belongsTo(CoursePlan::all());
+    }
+
+    public function links(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(CourseMaterialLink::class);
     }

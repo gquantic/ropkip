@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         $this->call([
+            CoursePlanSeeder::class,
             CourseMaterialSeeder::class,
         ]);
 

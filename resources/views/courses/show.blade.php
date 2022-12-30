@@ -3,30 +3,57 @@
 @section('content')
     <section class="content">
         <div class="container">
-            <h4>{{ $course->title }}</h4>
-
-            <p class="mb-0">{{ $course->description }}</p>
-
             <div class="row" id="materials">
-                @foreach($materials as $material)
-                    <div class="col-md-12 mb-xl-1 mt-xl-4">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <a href="{{ route('courses.show', $material->id ) }}">{{ $material->title }}</a>
-                                        <p class="mb-0">{{ $material->description }}</p>
-
-                                        @if ($material->links->count() > 0)
-                                            <hr>
-                                            <p class="mb-0 mb-1">Ссылки материала:</p>
-                                            @foreach($material->links as $link)
-                                                <a class="d-block" href="{{ $link->url }}">{{ $link->title }}</a>
-                                            @endforeach
-                                        @endif
-                                    </div>
-                                </div>
+                <div class="row">
+                    <div class="col-xl-7">
+                        <h4>{{ $course->title }}</h4>
+                        <p class="mb-0">{{ $course->description }}</p>
+                    </div>
+                    <div class="col-xl-5">
+                        <h5>Программы курса</h5>
+                        @foreach($course->coursePlans()->get() as $plan)
+                            <a class="btn btn-light w-100 mb-1">
+                                Программа на {{ $plan->courseMaterials()->sum('duration') }} часов -
+                                {{ $plan->courseMaterials()->sum('duration') * $course->price }} рублей
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+                @foreach($course->coursePlans()->get() as $plan)
+                    <div class="col-xl-12 mt-4">
+                        <div class="card p-0">
+                            <div class="card-header" style="background: #f5e0dd;">
+                                <b>
+                                    <img src="https://lomonosovlo.ru/upload/medialibrary/865/865549b92523a85ed44196a55ada01dd.png" style="width:25px;" alt="">
+                                    Учебный план на {{ $plan->courseMaterials()->sum('duration') }} часа</b>
                             </div>
+                            <div class="card-body p-0">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Наименование разделов, модулей, тем</th>
+                                        <th>Общая трудоемкость, в акад. час.</th>
+                                        <th>Аудиторная работа (семинарские занятия)</th>
+                                        <th>Внеаудиторная (самостоятельная работа)</th>
+                                        <th>Кол-во часов контроля</th>
+                                        <th>Тип контроля</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($plan->courseMaterials()->get() as $material)
+                                        <tr>
+                                            <td>{{ $material->title }}</td>
+                                            <td>{{ $material->title }}</td>
+                                            <td>{{ $material->title }}</td>
+                                            <td>{{ $material->title }}</td>
+                                            <td>{{ $material->title }}</td>
+                                            <td>{{ $material->title }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 @endforeach
             </div>

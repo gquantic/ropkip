@@ -12,4 +12,9 @@ class Course extends Model
     protected $casts = [
         'params' => 'array'
     ];
+
+    public function coursePlans(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CoursePlan::class);
+    }
 }
