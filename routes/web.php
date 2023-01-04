@@ -30,6 +30,15 @@ Route::resources([
 ]);
 
 
+Route::get('/order/view', function () {
+    $order = \App\Models\BuyedCourse::query()->find($_GET['order_id']);
+    return view('orders.view', ['orderData' => $_GET, 'order' => $order]);
+})->name('confirmed-order');
+
+Route::get('/order/show/{order}', function (\App\Models\BuyedCourse $order) {
+    return view('orders.show', compact('order'));
+})->name('order.show');
+
 /**
  * Get course
  */
@@ -39,3 +48,5 @@ Route::get('/courses/get/{id}', function ($id) {
         'course' => \App\Models\Course::find($id),
     ]);
 })->name('get-course');
+
+Route::get('teach/course/{course}', 'App\Http\Controllers\CourseController@teach')->name('courses.teach');

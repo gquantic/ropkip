@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('purchased_courses', function (Blueprint $table) {
+        Schema::create('buyed_courses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_requisite_id')->constrained('user_requisites');
             $table->foreignId('course_id')->constrained('courses');
+            $table->foreignId('course_plan_id')->constrained('course_plans');
+            $table->integer('price');
+            $table->integer('payed')->default(0);
+            $table->boolean('installment')->default(0)->comment('Оплата в рассрочку?');
             $table->timestamps();
         });
     }

@@ -17,4 +17,9 @@ class Course extends Model
     {
         return $this->hasMany(CoursePlan::class);
     }
+
+    public function orders(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(BuyedCourse::class);
+    }
 }

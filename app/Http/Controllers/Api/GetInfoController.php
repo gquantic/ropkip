@@ -4,19 +4,22 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CoursePlan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class GetInfoController extends Controller
 {
-    protected Course $course;
+    protected ?Course $course;
+    protected ?CoursePlan $plan;
 
     protected int $duration;
 
     public function getCourseInfo(Request $request)
     {
         $this->course = Course::query()->find($request->get('id'));
-        $this->duration = $request->get('duration');
+        $this->plan = CoursePlan::query()->find($request->get('course_plan'));
+        $this->duration = $this->plan->courseMaterials->sum('duration');
 
         return [
             'duration' => $this->duration,

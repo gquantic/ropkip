@@ -20,13 +20,23 @@ class CourseMaterialSeeder extends Seeder
     {
         foreach (Course::all() as $course) {
             $materialsCount = rand(0, 7);
+            $duration = [rand(1,4), rand(1,4), rand(1,2)];
+
             for ($i = 0; $i <= $materialsCount; $i++) {
                 CourseMaterial::query()->create([
                     'course_id' => $course->id,
                     'course_plan_id' => CoursePlan::query()->inRandomOrder()->first()->id,
                     'title' => fake()->title,
                     'description' => fake()->text(120),
-                    'duration' => rand(1, 4),
+                    'duration' => array_sum($duration),
+                    'duration_seminar' => $duration[0],
+                    'duration_self' => $duration[1],
+                    'duration_exam' => $duration[2],
+                    'exam' => fake()->randomElement([
+                        'Экзамен',
+                        'Тест',
+                        'Зачёт'
+                    ]),
                     'content' => fake()->text(120)
                 ]);
             }

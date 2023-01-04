@@ -19,6 +19,10 @@ return new class extends Migration
             $table->foreignId('course_plan_id')->constrained('course_plans');
             $table->string('title');
             $table->integer('duration')->default(2);
+            $table->integer('duration_seminar')->default(2);
+            $table->integer('duration_self')->default(1);
+            $table->integer('duration_exam')->default(1);
+            $table->string('exam')->default(2);
             $table->text('description')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();

@@ -8,13 +8,14 @@
                     <div class="col-xl-7">
                         <h4>{{ $course->title }}</h4>
                         <p class="mb-0">{{ $course->description }}</p>
+                        <a href="{{ route('get-course', $course->id) }}" class="btn btn-primary mt-3 w-25">Регистрация</a>
                     </div>
                     <div class="col-xl-5">
                         <h5>Программы курса</h5>
                         @foreach($course->coursePlans()->get() as $plan)
                             <a class="btn btn-light w-100 mb-1">
                                 Программа на {{ $plan->courseMaterials()->sum('duration') }} часов -
-                                {{ $plan->courseMaterials()->sum('duration') * $course->price }} рублей
+                                {{ $plan->courseMaterials()->sum('duration_self') * $course->price }} рублей
                             </a>
                         @endforeach
                     </div>
@@ -43,11 +44,11 @@
                                     @foreach($plan->courseMaterials()->get() as $material)
                                         <tr>
                                             <td>{{ $material->title }}</td>
-                                            <td>{{ $material->title }}</td>
-                                            <td>{{ $material->title }}</td>
-                                            <td>{{ $material->title }}</td>
-                                            <td>{{ $material->title }}</td>
-                                            <td>{{ $material->title }}</td>
+                                            <td>{{ $material->duration }}</td>
+                                            <td>{{ $material->duration_seminar }}</td>
+                                            <td>{{ $material->duration_self }}</td>
+                                            <td>{{ $material->duration_exam }}</td>
+                                            <td>{{ $material->exam }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
