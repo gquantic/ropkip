@@ -52,11 +52,11 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav d-flex justify-content-between w-100">
                         <li class="nav-item">
-                            <a class="nav-link" href="">Направления</a>
+                            <a class="nav-link" href="{{ route('u_courses.index') }}">Направления</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">О нас</a>
+                            <a class="nav-link" href="{{ route('about-us') }}">О нас</a>
                         </li>
 
                         <li class="nav-item">
@@ -87,11 +87,11 @@
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
-                                </li>
-                            @endif
+{{--                            @if (Route::has('register'))--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="{{ route('register') }}">Регистрация</a>--}}
+{{--                                </li>--}}
+{{--                            @endif--}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

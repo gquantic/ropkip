@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::prefix('/home/')->group(function () {
+    Route::view('about-us', 'home.about-us')->name('about-us');
+});
+
 Route::prefix('my')->middleware('auth')->group(function () {
 
 });
