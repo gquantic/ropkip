@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('course_id')->constrained('courses');
             $table->integer('total_hours');
+            $table->integer('price')->default(0);
             $table->timestamps();
         });
     }

@@ -1,5 +1,19 @@
-body {
+$border-radius: 7px;
+$card-shadow: 0px 7px 35px rgba(0,0,0,.05);
+
+.card-body {
     background: #fff;
+    border-radius: $border-radius !important;
+}
+
+.card {
+    border: none;
+    border-radius: $border-radius !important;
+    box-shadow: $card-shadow;
+}
+
+body {
+    background: #fafafa;
 }
 
 .logo {

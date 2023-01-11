@@ -71,7 +71,7 @@
                     '/api/category/types',
                     {
                         id: $('#categories').val()
-                    },
+                     },
                     function (data) {
                         $('#category-types *').remove();
                         data = JSON.parse(data);

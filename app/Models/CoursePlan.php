@@ -18,4 +18,9 @@ class CoursePlan extends Model
     {
         return $this->hasMany(CourseMaterial::class);
     }
+
+    public function planModules(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CoursePlanModule::class);
+    }
 }

@@ -31,7 +31,7 @@
                 </a>
 
                 <div class="d-flex align-items-center contacts">
-                    <a href="{{ route('courses.index') }}">
+                    <a href="{{ route('u_courses.index') }}">
                         <button class="btn btn-primary">Наши курсы</button>
                     </a>
 

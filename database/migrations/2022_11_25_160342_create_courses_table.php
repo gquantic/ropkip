@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
+            $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('category_type_id')->constrained('category_types');
+            $table->string('type');
             $table->string('title');
             $table->text('description')->nullable();
             $table->json('params')->nullable();

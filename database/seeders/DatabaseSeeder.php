@@ -25,30 +25,32 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::query()->create([
+           'is_admin' => 1,
            'name' => 'Murad',
            'email' => 'gapurovich05@mail.ru',
            'password' => Hash::make('@muraa005'),
         ]);
 
-        \App\Models\Category::factory()
-            ->count(10)
-            ->create();
-
-        $this->call([
-            CategoryTypesSeeder::class,
-        ]);
-
-        \App\Models\Course::factory()
-            ->count(10)
-            ->create();
-
-        $this->call([
-            CoursePlanSeeder::class,
-            CourseMaterialSeeder::class,
-        ]);
-
-        $this->call([
-            CourseMaterialLinkSeeder::class,
-        ]);
+//        \App\Models\Category::factory()
+//            ->count(10)
+//            ->create();
+//
+//        $this->call([
+//            CategoryTypesSeeder::class,
+//        ]);
+//
+//        \App\Models\Course::factory()
+//            ->count(10)
+//            ->create();
+//
+//        $this->call([
+//            CoursePlanSeeder::class,
+//            CoursePlanModuleSeeder::class,
+//            CourseMaterialSeeder::class,
+//        ]);
+//
+//        $this->call([
+//            CourseMaterialLinkSeeder::class,
+//        ]);
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('course_id')->constrained('courses');
             $table->foreignId('course_plan_id')->constrained('course_plans');
+            $table->foreignId('course_plan_module_id')->constrained('course_plan_modules');
             $table->string('title');
             $table->integer('duration')->default(2);
             $table->integer('duration_seminar')->default(2);

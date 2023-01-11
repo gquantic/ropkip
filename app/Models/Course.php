@@ -22,4 +22,9 @@ class Course extends Model
     {
         return $this->hasMany(BuyedCourse::class);
     }
+
+    public function courseModules(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CoursePlanModule::class);
+    }
 }

@@ -81,7 +81,7 @@
                                 <a class="btn btn-primary d-xl-block" href="{{ route('get-course', $course->id) }}">
                                     Регистрация
                                 </a>
-                                <a class="btn btn-light d-xl-block mt-xl-2" href="{{ route('courses.show', $course->id) }}">
+                                <a class="btn btn-light d-xl-block mt-xl-2" href="{{ route('u_courses.show', $course->id) }}">
                                     О программе
                                 </a>
                             </div>

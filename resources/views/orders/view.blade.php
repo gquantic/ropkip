@@ -3,6 +3,11 @@
 @section('content')
 {{--    @dd($orderData)--}}
     <div class="container">
+        <h4 class="text-danger position-absolute fw-bolder"
+            style="right: 0;width: 500px;text-align: left;transform: rotateZ(-60deg);margin-top: 100px;z-index: -1;">
+            ПРЕЖДЕ ЧЕМ ЗАКРЫТЬ СТРАНИЦУ, ЗАПИШИТЕ ВСЕ ДАННЫЕ!
+        </h4>
+
         <h4 class="fs-2">Заказ успешно оформлен!</h4>
 
         <p class="fs-4 mb-1 mt-3"><b>Данные заказа:</b></p>

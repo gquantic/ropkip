@@ -26,7 +26,7 @@ Route::prefix('my')->middleware('auth')->group(function () {
 });
 
 Route::resources([
-    'courses' => \App\Http\Controllers\CourseController::class,
+    'u_courses' => \App\Http\Controllers\CourseController::class,
 ]);
 
 
@@ -50,3 +50,17 @@ Route::get('/courses/get/{id}', function ($id) {
 })->name('get-course');
 
 Route::get('teach/course/{course}', 'App\Http\Controllers\CourseController@teach')->name('courses.teach');
+
+Route::prefix('/admin')->middleware('auth')->middleware('admin')->group(function () {
+    Route::resources([
+        'users' => \App\Http\Controllers\Admin\UserController::class,
+        'courses' => \App\Http\Controllers\Admin\CourseController::class,
+        'tests' => \App\Http\Controllers\Admin\TestController::class,
+        'questions' => \App\Http\Controllers\Admin\QuestionController::class,
+        'a_category' => \App\Http\Controllers\Admin\CategoryController::class,
+        'a_ctype' => \App\Http\Controllers\Admin\CategoryTypeController::class,
+        'a_plan' => \App\Http\Controllers\Admin\CoursePlanController::class,
+    ]);
+
+    Route::view('/', 'admin.home');
+});
