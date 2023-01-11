@@ -60,6 +60,8 @@ Route::prefix('/admin')->middleware('auth')->middleware('admin')->group(function
         'a_category' => \App\Http\Controllers\Admin\CategoryController::class,
         'a_ctype' => \App\Http\Controllers\Admin\CategoryTypeController::class,
         'a_plan' => \App\Http\Controllers\Admin\CoursePlanController::class,
+        'a_modules' => \App\Http\Controllers\Admin\CourseModuleController::class,
+        'a_materials' => \App\Http\Controllers\Admin\MaterialController::class,
     ]);
 
     Route::view('/', 'admin.home');

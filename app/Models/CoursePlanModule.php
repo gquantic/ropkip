@@ -16,7 +16,7 @@ class CoursePlanModule extends Model
 
     public function plan(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(CoursePlan::class);
+        return $this->belongsTo(CoursePlan::class, 'course_plan_id');
     }
     public function materials(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

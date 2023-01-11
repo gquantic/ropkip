@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="fs-4 fw-bolder">План на {{ $plan->courseMaterials->sum('duration') }} часов</div>
-                <a href="">Добавить модуль</a>
+                <a href="{{ route('a_modules.create', ['course' => $course->id, 'plan' => $plan->id]) }}">Добавить модуль</a>
                 @foreach($plan->planModules as $module)
                     <div class="card">
                         <div class="card-body">
@@ -18,7 +18,7 @@
                             @foreach($module->materials as $material)
                                 <a href="{{ $material->link }}" class="fs-6 d-block"><i class="mdi mdi-link-variant"></i> {{ $material->title }}</a>
                             @endforeach
-                            <a href="" class="fs-6 d-block text-decoration-underline mb-3"><i class="mdi mdi-link-variant-plus"></i> Добавить материал</a>
+                            <a href="{{ route('a_materials.create', ['moduleId' => $module->id]) }}" class="fs-6 d-block text-decoration-underline mb-3"><i class="mdi mdi-link-variant-plus"></i> Добавить материал</a>
 
                             <div class="fs-5 fw-bolder">Тесты модуля:</div>
 

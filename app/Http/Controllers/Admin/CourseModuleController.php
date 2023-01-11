@@ -25,7 +25,7 @@ class CourseModuleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.modules.create');
     }
 
     /**
@@ -36,7 +36,13 @@ class CourseModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $module = new CoursePlanModule();
+        $module->course_id = $request->post('course');
+        $module->course_plan_id = $request->post('plan');
+        $module->title = $request->post('title');
+        $module->save();
+
+        return redirect()->route('courses.edit', $request->post('course'));
     }
 
     /**

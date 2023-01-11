@@ -18,4 +18,9 @@ class CourseMaterial extends Model
     {
         return $this->hasMany(CourseMaterialLink::class);
     }
+
+    public function modules(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(CoursePlanModule::class);
+    }
 }
