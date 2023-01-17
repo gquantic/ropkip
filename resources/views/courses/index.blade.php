@@ -13,25 +13,25 @@
                     <div class="col-xl-5">
                         <div class="form-group mb-2">
                             <label for="type1">
-                                <input type="radio" name="type" class="form-check-input bg-gradient" id="type1" checked="checked">
+                                <input type="radio" name="type" class="form-check-input bg-gradient" id="type1" value="%" checked="checked">
                                 Все курсы
                             </label>
                         </div>
                         <div class="form-group mb-2">
                             <label for="type2">
-                                <input type="radio" name="type" class="form-check-input bg-gradient" id="type2">
+                                <input type="radio" name="type" class="form-check-input bg-gradient" value="repair" id="type2">
                                 Программы профессиональной переподготовки
                             </label>
                         </div>
                         <div class="form-group mb-2">
                             <label for="type3">
-                                <input type="radio" name="type" class="form-check-input bg-gradient" id="type3">
+                                <input type="radio" name="type" class="form-check-input bg-gradient" value="up" id="type3">
                                 Программы повышения квалификации
                             </label>
                         </div>
                         <div class="form-group mb-2">
                             <label for="type4">
-                                <input type="radio" name="type" class="form-check-input bg-gradient" id="type4">
+                                <input type="radio" name="type" class="form-check-input bg-gradient" value="teach" id="type4">
                                 Основные программы профессионального обучения
                             </label>
                         </div>
@@ -40,6 +40,7 @@
                         <div class="form-group mb-2">
                             <label for="">Направления</label>
                             <select name="category" id="categories" class="form-control w-100">
+                                <option value="%">Все направления</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                 @endforeach
@@ -48,6 +49,7 @@
                         <div class="form-group">
                             <label for="">Квалификация</label>
                             <select name="category-type" id="category-types" class="form-control w-100">
+                                <option value="%">Все квалификации</option>
                                 @foreach($categories->first()->categoryTypes as $type)
                                     <option value="{{ $type->id }}">{{ $type->title }}</option>
                                 @endforeach
@@ -106,6 +108,8 @@
                 function (data) {
                     $('#category-types *').remove();
                     data = JSON.parse(data);
+
+                    $('#category-types').append('<option value="%">Все квалификации</option>')
 
                     for (let item of data) {
                         $('#category-types').append('<option value="' + item.id + '">' + item.title + '</option>')
